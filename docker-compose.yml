@@ -1,0 +1,37 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+
+  cvision:
+    build: .
+    image: mohamedkhalilzrelly/cvision:latest
+    container_name: cvision
+    ports:
+      - "8501:8501"
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      MONGO_DB: ${MONGO_DB}
+      HF_API_TOKEN: ${HF_API_TOKEN}
+      EMBED_MODEL: ${EMBED_MODEL}
+      LLM_MODEL: ${LLM_MODEL}
+      VEC_BATCH_SIZE: ${VEC_BATCH_SIZE}
+      LLM_BATCH_SIZE: ${LLM_BATCH_SIZE}
+      TOP_K_CHUNKS: ${TOP_K_CHUNKS}
+      TOP_K_CVS: ${TOP_K_CVS}
+    depends_on:
+      - mongodb
+    volumes:
+      - ./docs:/app/docs
+      - ./data:/app/data
+
+volumes:
+  mongo_data:

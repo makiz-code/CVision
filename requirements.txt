@@ -1,0 +1,7 @@
+langchain-chroma>=0.2.5
+huggingface-hub>=0.34.4
+pymupdf>=1.26.0
+pymongo>=4.0.0
+python-dotenv>=1.0.0
+tqdm>=4.65.0
+streamlit>=1.30.0

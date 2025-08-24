@@ -1,0 +1,18 @@
+# Python cache
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Environment files
+.env
+
+# Uploaded docs
+docs/
+data/
+
+# OS/editor files
+*.DS_Store
