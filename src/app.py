@@ -3,7 +3,6 @@ import os
 import base64
 from pathlib import Path
 from matcher import match_cvs
-from utils import clean_dbs
 
 # --- Set up CV storage folder ---
 CV_FOLDER = Path.cwd() / "docs"
@@ -145,7 +144,6 @@ if run_clicked:
 
 # --- Perform CV matching if matching is active ---
 if st.session_state.matching:
-    clean_dbs()
     log_container = st.empty()
     results = []
 
