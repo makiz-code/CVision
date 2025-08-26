@@ -17,7 +17,7 @@ Before starting, ensure you have the following installed:
 2. **Configure environment variables:**  
    Create a .env file in the project folder containing all variables required by docker-compose.yml, ensuring the keys and values match the backend service configuration.
 
-## Running the project
+## Running the Project
 
 Make sure Docker Desktop is running before launching anything  
 Run the following command to create the containers: docker-compose build  
