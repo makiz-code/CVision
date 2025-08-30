@@ -1,21 +1,30 @@
 # Python cache
 **/__pycache__/
-**/*.pyc
-**/*.pyo
-**/*.pyd
+*.pyc
+*.pyo
+*.pyd
 
 # Virtual environment
 app/.venv/
 
 # Environment files
-**/*.env
+**/.env
 
-# Uploaded docs
+# Uploaded docs (keep .gitkeep)
 app/src/docs/*
 !app/src/docs/.gitkeep
 
+# Data files (keep .gitkeep)
 app/src/data/*
 !app/src/data/.gitkeep
 
+# Logs
+*.log
+
 # OS/editor files
 *.DS_Store
+*.swp
+*.swo
+
+# Streamlit cache
+app/src/.streamlit/
