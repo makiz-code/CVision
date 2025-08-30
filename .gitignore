@@ -8,7 +8,7 @@
 app/.venv/
 
 # Environment files
-.env
+**/.env
 
 # Uploaded docs
 app/src/docs/*
