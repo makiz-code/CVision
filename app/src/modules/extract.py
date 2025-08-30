@@ -2,9 +2,9 @@ import os
 import fitz
 import re
 import json
-from config import DOCS_DIR, LLM_BATCH_SIZE, MONGO_URI, MONGO_DB
+from config.envs import DOCS_DIR, LLM_BATCH_SIZE, MONGO_URI, MONGO_DB
 from tqdm import tqdm
-from prompt import query_llm
+from modules.prompt import query_llm
 from pymongo import MongoClient
 
 def clean_text(text: str) -> str:

@@ -2,10 +2,12 @@ import streamlit as st
 import os
 import base64
 from pathlib import Path
-from matcher import match_cvs
+from modules.matcher import match_cvs
+from utils.cleaner import clean_dbs
+from config.envs import DOCS_DIR
 
 # --- Set up CV storage folder ---
-CV_FOLDER = Path.cwd() / "docs"
+CV_FOLDER = Path(DOCS_DIR)
 CV_FOLDER.mkdir(parents=True, exist_ok=True)
 
 # --- Page title and styling ---
@@ -97,6 +99,7 @@ if st.session_state.existing_cvs:
                         disabled = st.session_state.matching
                         if st.button("❌", key=f"del_{cv_file}", disabled=disabled):
                             os.remove(cv_path)
+                            clean_dbs()
                             files_to_remove.append(cv_file)
             else:
                 col.write("")
@@ -142,8 +145,8 @@ if run_clicked:
         st.session_state.cv_index = 0
         st.rerun()
 
-# --- Perform CV matching if matching is active ---
-if st.session_state.matching:
+# --- Perform CV matching ---
+if st.session_state.matching and not st.session_state.sorted_results:
     log_container = st.empty()
     results = []
 
@@ -153,9 +156,9 @@ if st.session_state.matching:
         else:
             log_container.info(msg)
 
+    st.session_state.matching = False
     st.session_state.sorted_results = results
     st.session_state.cv_index = 0
-    st.session_state.matching = False
     st.rerun()
 
 # --- Display recommended CVs ---
@@ -202,7 +205,7 @@ if st.session_state.get("sorted_results") and not st.session_state.matching:
             st.session_state.cv_index -= 1
 
     # --- Navigation buttons for next/previous CV ---
-    nav_col1, nav_col2, nav_col3 = st.columns([1, 6, 1])
+    nav_col1, nav_col2, nav_col3 = st.columns([1, 12, 1])
     with nav_col1:
         st.button("⬅", on_click=prev_cv, disabled=cv_index == 0 or st.session_state.matching)
     with nav_col3:

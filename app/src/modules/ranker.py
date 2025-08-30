@@ -1,8 +1,9 @@
 import json
 import re
-from config import MONGO_URI, MONGO_DB, LLM_BATCH_SIZE, TOP_K_CVS
+from config.envs import MONGO_URI, MONGO_DB, LLM_BATCH_SIZE, TOP_K_CVS
 from pymongo import MongoClient
-from prompt import query_llm
+from tqdm import tqdm
+from modules.prompt import query_llm
 
 def load_candidate_sections(src_file: str, collection_name: str = "chunks") -> dict:
     client = MongoClient(MONGO_URI)
@@ -69,7 +70,7 @@ def rank_candidates(role: str, chunks: list):
     results = []
     candidate_keys = list(candidates_sections.keys())
     
-    for i in range(0, len(candidate_keys), LLM_BATCH_SIZE):
+    for i in tqdm(range(0, len(candidate_keys), LLM_BATCH_SIZE), desc="Ranking Profiles"):
         batch_keys = candidate_keys[i:i+LLM_BATCH_SIZE]
         batch_candidates = {k: candidates_sections[k] for k in batch_keys}
         prompt = build_ranking_prompt(role, batch_candidates)

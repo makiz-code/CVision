@@ -1,10 +1,7 @@
-import os
-from config import VDB_DIR, MONGO_URI, MONGO_DB
+from config.envs import VDB_DIR, MONGO_URI, MONGO_DB
 from pymongo import MongoClient
-from retrieve import RemoteEmbedding
+from modules.retrieve import RemoteEmbedding
 from langchain_chroma import Chroma
-
-PERSIST_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", VDB_DIR))
 
 def load_extracted(collection_name: str = "chunks") -> list:
     client = MongoClient(MONGO_URI)
@@ -24,7 +21,7 @@ def ingest_chunks(collection_name: str = "chunks") -> None:
     docs = load_extracted()
     embed_model = RemoteEmbedding()
     db = Chroma(
-        persist_directory=PERSIST_DIR,
+        persist_directory=VDB_DIR,
         embedding_function=embed_model,
         collection_name=collection_name
     )

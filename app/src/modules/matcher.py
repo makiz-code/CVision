@@ -1,13 +1,10 @@
-from utils import clean_dbs
-from extract import extract_chunks
-from ingest import ingest_chunks
-from retrieve import retrieve_chunks
-from ranker import rank_candidates
+from modules.extract import extract_chunks
+from modules.ingest import ingest_chunks
+from modules.retrieve import retrieve_chunks
+from modules.ranker import rank_candidates
 
 def match_cvs(role: str):
     try:
-        clean_dbs()
-
         yield "Extracting Chunks..."
         extract_chunks()
         yield "Chunks Extracted ✅"

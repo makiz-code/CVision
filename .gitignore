@@ -5,14 +5,17 @@
 *.pyd
 
 # Virtual environment
-.venv/
+app/.venv/
 
 # Environment files
 .env
 
 # Uploaded docs
-docs/
-data/
+app/src/docs/*
+!app/src/docs/.gitkeep
+
+app/src/data/*
+!app/src/data/.gitkeep
 
 # OS/editor files
 *.DS_Store

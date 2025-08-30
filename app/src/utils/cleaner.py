@@ -1,10 +1,8 @@
 import os
-from config import DOCS_DIR, VDB_DIR, MONGO_URI, MONGO_DB
+from config.envs import DOCS_DIR, VDB_DIR, MONGO_URI, MONGO_DB
 from langchain_chroma import Chroma
 from pymongo import MongoClient
-from retrieve import RemoteEmbedding
-
-PERSIST_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", VDB_DIR))
+from modules.retrieve import RemoteEmbedding
 
 def remove_deleted_mongodb_chunks():
     client = MongoClient(MONGO_URI)
@@ -26,7 +24,7 @@ def remove_deleted_mongodb_chunks():
 def remove_deleted_chromadb_chunks(collection_name: str = "chunks"):
     embed_model = RemoteEmbedding()
     db = Chroma(
-        persist_directory=PERSIST_DIR,
+        persist_directory=VDB_DIR,
         embedding_function=embed_model,
         collection_name=collection_name,
     )
