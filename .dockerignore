@@ -1,14 +1,14 @@
 # Python cache
 **/__pycache__/
-*.pyc
-*.pyo
-*.pyd
+**/*.pyc
+**/*.pyo
+**/*.pyd
 
 # Virtual environment
 app/.venv/
 
 # Environment files
-.env
+**/*.env
 
 # Uploaded docs
 app/src/docs/*
