@@ -1,6 +1,6 @@
 # CVision
 
-LLM-Infused CV Recommendation System with Retrieval-Augmented Generation and Automated Ranking
+LLM-Infused CV Recommendation System with Retrieval-Augmented Generation
 
 ---
 
