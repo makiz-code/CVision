@@ -23,9 +23,9 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - ./app/src:/app
-      - ./app/src/docs:/app/docs
-      - ./app/src/data:/app/data
+      - ./app/src:/app/src
+      - ./app/src/docs:/app/src/docs
+      - ./app/src/data:/app/src/data
 
 volumes:
   mongo_data:
