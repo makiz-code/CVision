@@ -1,6 +1,6 @@
 # CVision
 
-LLM-Infused CV Recommendation System with Retrieval-Augmented Generation
+RAG-Enabled CV Recommendation System with Automated Ranking
 
 ---
 
@@ -22,7 +22,7 @@ LLM-Infused CV Recommendation System with Retrieval-Augmented Generation
 
 ### Concept
 
-CVision is an **In-Context Learning (ICL)** system designed to streamline CV evaluation and candidate recommendation through **Retrieval-Augmented Generation (RAG)**. Instead of manually reviewing CVs, the system processes them in batches using an LLM to extract structured chunks such as Experience, Projects, Skills, Certifications, and Education, preserving every critical detail. These chunks are stored in a **VectorDB**, allowing CVision to dynamically reconstruct candidate profiles by retrieving the most relevant chunks for a given job description. Finally, a scoring module ranks candidates based on a weighted evaluation of their qualifications, providing transparent and detailed explanations for each score.
+CVision is a CV recommendation system that leverages **Retrieval-Augmented Generation (RAG)** to streamline CV evaluation and candidate recommendation. Instead of manually reviewing CVs, the system processes them in batches using an LLM to extract structured chunks such as Experience, Projects, Skills, Certifications, and Education, preserving every critical detail. These chunks are stored in a **VectorDB**, allowing CVision to dynamically reconstruct candidate profiles by retrieving the most relevant chunks for a given job description. Finally, a scoring module ranks candidates based on a weighted evaluation of their qualifications, providing transparent and detailed explanations for each score.
 
 ### Challenges
 
